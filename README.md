@@ -2,7 +2,10 @@
 
 > Update references to assets versioned with [grunt-filerev](https://github.com/yeoman/grunt-filerev). Leaner and faster than [grunt-usemin](https://github.com/yeoman/grunt-usemin), and able to update already versioned references.
 
-<a href='https://npmjs.org/package/grunt-userev2'><img align='right' alt='npm' title='npm info' src='https://nodei.co/npm/grunt-userev2.png?compact=true' /></a>&nbsp;[![build](https://secure.travis-ci.org/k3karthic/grunt-userev.png?branch=master)](https://travis-ci.org/k3karthic/grunt-userev) [![dependencies](https://david-dm.org/k3karthic/grunt-userev.png)](https://david-dm.org/k3karthic/grunt-userev) [![dev-dependencies](https://david-dm.org/k3karthic/grunt-userev/dev-status.png)](https://david-dm.org/k3karthic/grunt-userev#info=devDependencies)
+<a href='https://npmjs.org/package/grunt-userev2'><img align='right' alt='npm' title='npm info' src='https://nodei.co/npm/grunt-userev2.png?compact=true' /></a>&nbsp;
+[![Build Status](https://travis-ci.org/k3karthic/grunt-userev.png?branch=master)](https://travis-ci.org/k3karthic/grunt-userev) 
+[![dependencies](https://david-dm.org/k3karthic/grunt-userev.png)](https://david-dm.org/k3karthic/grunt-userev) 
+[![dev-dependencies](https://david-dm.org/k3karthic/grunt-userev/dev-status.png)](https://david-dm.org/k3karthic/grunt-userev#info=devDependencies)
 
 
 
