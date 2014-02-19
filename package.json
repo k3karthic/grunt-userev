@@ -1,11 +1,11 @@
 {
   "name": "grunt-userev2",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Forked from grunt-userev: Update references to assets versioned with grunt-filerev. Leaner and faster than grunt-usemin, and able to update already versioned references.",
   "homepage": "https://github.com/k3karthic/grunt-userev",
   "repository": {
     "type": "git",
-    "url": "git://github.com/k3karthic/grunt-userev.git"
+    "url": "https://github.com/k3karthic/grunt-userev.git"
   },
   "bugs": "https://github.com/k3karthic/grunt-userev/issues",
   "author": {
