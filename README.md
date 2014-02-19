@@ -65,8 +65,8 @@ grunt.initConfig({
       src: 'build/index.html',
       options: {
         patterns: {
-          'Linking versioned asset': /(css\/[a-z0-9.]*\.css)/,
-          'Linking versioned assets': /(css\/[a-z0-9.]*\.css)/g,
+          'Linking versioned asset': /(css\/[a-z0-9./]*\.css)/,
+          'Linking versioned assets': /(css\/[a-z0-9./]*\.css)/g,
         },
       },
     },
