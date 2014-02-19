@@ -42,7 +42,7 @@ module.exports = function (grunt) {
         },
 
         // Watch sources and run tests.
-        delta: {
+        watch: {
             js: {
                 files: ['test/**', 'tasks/*.js', 'Gruntfile.js'],
                 tasks: ['jshint', 'test'],
@@ -58,14 +58,10 @@ module.exports = function (grunt) {
     // Actually load this plugin's task(s).
     grunt.loadTasks('tasks');
 
-    // By default, lint and run all tests.
-    grunt.registerTask('default', ['jshint', 'test']);
-
-    // On watch, run both default and delta (original watch).
-    grunt.renameTask('watch', 'delta');
-    grunt.registerTask('watch', ['default', 'delta']);
-
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
     grunt.registerTask('test', ['clean', 'nodeunit']);
+
+    // By default, lint and run all tests.
+    grunt.registerTask('default', ['jshint', 'test', 'watch']);
 };
