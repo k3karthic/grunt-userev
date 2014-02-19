@@ -1,4 +1,4 @@
-# grunt-userev2
+# grunt-userev2 <a href='https://github.com/salsita'><img align='right' title='Salsita' src='https://www.google.com/a/cpanel/salsitasoft.com/images/logo.gif?alpha=1' _src='https://1.gravatar.com/avatar/d413290a5fe1385efcf5a344d4a0b588?s=50' /></a>
 
 > Update references to assets versioned with [grunt-filerev](https://github.com/yeoman/grunt-filerev). Leaner and faster than [grunt-usemin](https://github.com/yeoman/grunt-usemin), and able to update already versioned references.
 
