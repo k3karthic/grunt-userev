@@ -1,7 +1,7 @@
-/* jslint node: true */
 "use strict";
 
 var grunt = require('grunt');
+var path = require('path');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -25,14 +25,36 @@ var grunt = require('grunt');
 
 exports.runtaskTest = {
     setUp: function (done) {
-        // setup here if necessary
+        grunt.file.mkdir('build');
+        grunt.file.mkdir('build/css');
+        grunt.file.write('build/css/jquery.css', '');
+        grunt.file.write('build/css/bootstrap/test.css', '');
+        grunt.file.copy(
+            path.join(
+                __dirname,
+                'fixtures/index.html'
+            ),
+            'build/index.html'
+        );
+
         done();
     },
+
     someTest: function (test) {
-        test.expect(1);
+        grunt.util.spawn({
+            grunt: true,
+            args: ['userevTest']
+        }, function(err, result) {
+            if (err) {
+                grunt.log.writeln(err);
+            } else {
+                var changed = grunt.file.read('build/index.html');
 
-        test.equal(1, 1, 'should ...');
+                test.ok(changed.match(/<link src="\/css\/jquery\.d41d8cd9\.css">/));
+                test.ok(changed.match(/<link src="\/css\/bootstrap\/test\.d41d8cd9\.css">/));
 
-        test.done();
+                test.done();
+            }
+        });
     },
 };

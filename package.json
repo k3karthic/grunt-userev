@@ -28,7 +28,7 @@
   "main": "Gruntfile.js",
 
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
 
   "licenses": [
@@ -43,6 +43,7 @@
     "grunt-contrib-jshint": "*",
     "grunt-contrib-nodeunit": "*",
     "grunt-contrib-watch": "*",
+    "grunt-filerev": "*",
     "grunt-conventional-changelog": "*",
     "load-grunt-tasks": "*",
     "grunt": "*"

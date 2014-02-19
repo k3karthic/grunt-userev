@@ -1,4 +1,3 @@
-/* jslint node: true */
 "use strict";
 
 /*
@@ -36,6 +35,31 @@ module.exports = function (grunt) {
             tests: ['tmp']
         },
 
+        filerev: {
+            options: {
+                encoding: 'utf8',
+                algorithm: 'md5',
+                length: 8
+            },
+            css: {
+                src: 'build/css/**/*.css'
+            }
+        },
+
+        userev: {
+            options: {
+                hash: /(\.[a-f0-9]{8})\.[a-z]+$/,
+            },
+            html: {
+                src: 'build/index.html',
+                options: {
+                    patterns: {
+                        'versioned css': new RegExp('css/[a-z0-9./]*css','g')
+                    }
+                }
+            }
+        },
+
         // Unit tests.
         nodeunit: {
             tests: ['test/*_test.js']
@@ -61,6 +85,8 @@ module.exports = function (grunt) {
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
     grunt.registerTask('test', ['clean', 'nodeunit']);
+
+    grunt.registerTask('userevTest', ['filerev','userev']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'test', 'watch']);
