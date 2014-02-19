@@ -1,3 +1,6 @@
+/* jslint node: true */
+"use strict";
+
 /*
  * grunt-userev
  * https://github.com/k3karthic/grunt-userev
@@ -5,8 +8,6 @@
  * Copyright (c) 2013 Salsita Software
  * Licensed under the MIT license.
  */
-
-'use strict';
 
 // http://stackoverflow.com/a/18620139/899047
 var reEscape = function(s) {
@@ -19,8 +20,8 @@ var endsWith = function(s, suffix) {
 };
 
 module.exports = function (grunt) {
-    var versioned = undefined;
-    var options = undefined;
+    var versioned;
+    var options;
 
     var checkFile = function(filepath) {
         if (!grunt.file.exists(filepath)) {
@@ -38,24 +39,32 @@ module.exports = function (grunt) {
         grunt.log.writeln('Updating: ' + filepath.cyan);
 
         for (var label in options.patterns) {
-            var pattern = options.patterns[label];
-            var matches = content.match(pattern);
+            if (options.patterns.hasOwnProperty(label)) {
+                var pattern = options.patterns[label];
+                var matches = content.match(pattern);
 
-            for (var index in matches) {
-                var match = matches[index];
+                if (matches === null) {
+                    continue;
+                }
 
-                grunt.log.debug(
-                    'Matching ' +
-                    [filepath, pattern, JSON.stringify(match)].join(': ')
-                );
+                var index,tot;
+                for (index=0, tot=matches.length; index < tot; index=index+1) {
+                    var match = matches[index];
 
-                for (var assetpath in versioned) {
-                    if (endsWith(assetpath, match)) {
-                        var hashLink = versioned[assetpath].slice(assetpath.length - match.length);
+                    grunt.log.debug(
+                        'Matching ' +
+                            [filepath, pattern, JSON.stringify(match)].join(': ')
+                    );
 
-                        grunt.log.writeln(label + ': ' + match + ' -> ' + hashLink);
-                        content = content.replace(match, hashLink);
-                        updated = true;
+                    for (var assetpath in versioned) {
+                        if (versioned.hasOwnProperty(assetpath) &&
+                            endsWith(assetpath, match)) {
+                            var hashLink = versioned[assetpath].slice(assetpath.length - match.length);
+
+                            grunt.log.writeln(label + ': ' + match + ' -> ' + hashLink);
+                            content = content.replace(match, hashLink);
+                            updated = true;
+                        }
                     }
                 }
             }
@@ -83,8 +92,10 @@ module.exports = function (grunt) {
             var re = new RegExp(reEscape(path.sep), 'g');
 
             for (var assetpath in versioned) {
-                versioned[assetpath.replace(re, sep)] = versioned[assetpath].replace(re, sep);
-                delete versioned[assetpath];
+                if (versioned.hasOwnProperty(assetpath)) {
+                    versioned[assetpath.replace(re, sep)] = versioned[assetpath].replace(re, sep);
+                    delete versioned[assetpath];
+                }
             }
         }
 

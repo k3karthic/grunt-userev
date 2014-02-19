@@ -1,4 +1,5 @@
-'use strict';
+/* jslint node: true */
+"use strict";
 
 var grunt = require('grunt');
 
@@ -7,31 +8,31 @@ var grunt = require('grunt');
   https://github.com/caolan/nodeunit
 
   Test methods:
-    test.expect(numAssertions)
-    test.done()
+  test.expect(numAssertions)
+  test.done()
   Test assertions:
-    test.ok(value, [message])
-    test.equal(actual, expected, [message])
-    test.notEqual(actual, expected, [message])
-    test.deepEqual(actual, expected, [message])
-    test.notDeepEqual(actual, expected, [message])
-    test.strictEqual(actual, expected, [message])
-    test.notStrictEqual(actual, expected, [message])
-    test.throws(block, [error], [message])
-    test.doesNotThrow(block, [error], [message])
-    test.ifError(value)
+  test.ok(value, [message])
+  test.equal(actual, expected, [message])
+  test.notEqual(actual, expected, [message])
+  test.deepEqual(actual, expected, [message])
+  test.notDeepEqual(actual, expected, [message])
+  test.strictEqual(actual, expected, [message])
+  test.notStrictEqual(actual, expected, [message])
+  test.throws(block, [error], [message])
+  test.doesNotThrow(block, [error], [message])
+  test.ifError(value)
 */
 
 exports.runtaskTest = {
-  setUp: function (done) {
-    // setup here if necessary
-    done();
-  },
-  someTest: function (test) {
-    test.expect(1);
+    setUp: function (done) {
+        // setup here if necessary
+        done();
+    },
+    someTest: function (test) {
+        test.expect(1);
 
-    test.equal(1, 1, 'should ...');
+        test.equal(1, 1, 'should ...');
 
-    test.done();
-  },
+        test.done();
+    },
 };
