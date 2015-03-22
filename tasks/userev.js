@@ -92,8 +92,12 @@ module.exports = function (grunt) {
 
             for (var assetpath in versioned) {
                 if (versioned.hasOwnProperty(assetpath)) {
-                    versioned[assetpath.replace(re, sep)] = versioned[assetpath].replace(re, sep);
-                    delete versioned[assetpath];
+					// Fix by https://github.com/upta
+					//   Don't nuke grunt.filerev.summary if userev is invoked multiple times
+					if ( assetpath !== assetpath.replace( re, sep ) ) {
+						versioned[assetpath.replace(re, sep)] = versioned[assetpath].replace(re, sep);
+						delete versioned[assetpath];
+					}
                 }
             }
         }
